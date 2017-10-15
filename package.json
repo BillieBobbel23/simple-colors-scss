@@ -1,0 +1,29 @@
+{
+  "name": "simple-colors",
+  "description": "Gulp wrapper for simple-colors",
+  "version": "1.1.1",
+  "main": "./_simple-colors.scss",
+  "keywords": [
+    "Simple Colors",
+    "Atomic Design",
+    "Node",
+    "Gulp",
+    "SCSS"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bililebobbel23/simple-colors.git"
+  },
+  "scripts": {
+    "make-css": "gulp make-css"
+  },
+  "bugs": "https://github.com/billiebobbel23/simple-colors/issues/",
+  "author": "Ralph van Barneveld",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0"
+  }
+}
