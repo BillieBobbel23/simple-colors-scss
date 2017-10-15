@@ -1,0 +1,46 @@
+// Because colors
+
+// In case more than 2 maps are combined
+@function merge-maps($maps...) {
+  $combined: ();
+  @each $map in $maps {
+    $combined: map-merge($combined, $map);
+  }
+  @return $combined;
+}
+
+// name colors in an absolute map based on their value:
+// http://chir.ag/projects/name-that-color/#6195ED or
+// https://www.npmjs.com/package/namethatcolor
+$colors: (
+  'white': #fff,
+  'black': #000,
+  'hot-pink':  #ff69b4,
+  'pale-cornflower-blue': #abcdef
+);
+
+// create shorthands for things, using the names above
+$test-colors: (
+  'test':  map-get($colors, 'hot-pink'),
+  'test-blue': map-get($colors, 'pale-cornflower-blue'),
+);
+
+// technically other color types and properties could be used too
+$not-really-colors: (
+  'none': transparent,
+  'red-alpha': rgba(255,0,0,.3),
+  'gradient': linear-gradient(to bottom, darken(map-get($colors, 'hot-pink'), 20%), map-get($colors, 'hot-pink')),
+);
+
+// Merge old and new map(s) into one, cascade applies to duplicate entries
+$colors: merge-maps(
+  $colors,
+  $test-colors,
+  $not-really-colors,
+);
+
+// use it:
+// body {
+//   background-color: map-get($colors, 'gradient');
+//   color: map-get($colors, 'white');
+// }
