@@ -9,6 +9,16 @@
   @return $combined;
 }
 
+// map-get in a wrapper to give some debug feedback
+@function get-map($map, $key) {
+  @if( map-has-key($map, $key)) {
+    @return map-get($map, $key);
+  } @else {
+    @debug "Unknown key: `#{$key}` found, value could not be set";
+    @return null;
+  }
+}
+
 // name colors in an absolute map based on their value:
 // http://chir.ag/projects/name-that-color/#6195ED or
 // https://www.npmjs.com/package/namethatcolor
@@ -21,26 +31,26 @@ $colors: (
 
 // create shorthands for things, using the names above
 $test-colors: (
-  'test':  map-get($colors, 'hot-pink'),
-  'test-blue': map-get($colors, 'pale-cornflower-blue'),
+  'test':  get-map($colors, 'hot-pink'),
+  'test-blue': get-map($colors, 'pale-cornflower-blue'),
 );
 
 // technically other color types and properties could be used too
 $not-really-colors: (
   'none': transparent,
   'red-alpha': rgba(255,0,0,.3),
-  'gradient': linear-gradient(to bottom, darken(map-get($colors, 'hot-pink'), 20%), map-get($colors, 'hot-pink')),
+  'gradient': linear-gradient(to bottom, darken(get-map($colors, 'hot-pink'), 20%), get-map($colors, 'hot-pink')),
 );
 
 // Merge old and new map(s) into one, cascade applies to duplicate entries
 $colors: merge-maps(
   $colors,
   $test-colors,
-  $not-really-colors,
+  $not-really-colors
 );
 
 // use it:
 // body {
-//   background-color: map-get($colors, 'gradient');
-//   color: map-get($colors, 'white');
+//   background-color: get-map($colors, 'gradient');
+//   color: get-map($colors, 'white');
 // }
