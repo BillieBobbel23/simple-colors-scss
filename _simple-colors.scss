@@ -19,6 +19,11 @@
   }
 }
 
+// Shorthand for get-map with colors map predefined
+@function color($key) {
+  @return get-map($colors, $key);
+}
+
 // name colors in an absolute map based on their value:
 // http://chir.ag/projects/name-that-color/#6195ED or
 // https://www.npmjs.com/package/namethatcolor
@@ -31,15 +36,15 @@ $colors: (
 
 // create shorthands for things, using the names above
 $test-colors: (
-  'test':  get-map($colors, 'hot-pink'),
-  'test-blue': get-map($colors, 'pale-cornflower-blue'),
+  'test':  color('hot-pink'),
+  'test-blue': color('pale-cornflower-blue'),
 );
 
 // technically other color types and properties could be used too
 $not-really-colors: (
   'none': transparent,
   'red-alpha': rgba(255,0,0,.3),
-  'gradient': linear-gradient(to bottom, darken(get-map($colors, 'hot-pink'), 20%), get-map($colors, 'hot-pink')),
+  'gradient': linear-gradient(to bottom, darken(color('hot-pink'), 20%), color('hot-pink')),
 );
 
 // Merge old and new map(s) into one, cascade applies to duplicate entries
@@ -51,6 +56,7 @@ $colors: merge-maps(
 
 // use it:
 // body {
-//   background-color: get-map($colors, 'gradient');
-//   color: get-map($colors, 'white');
+//   background-color: color('black');
+//   color: color('white');
+//   border-color: color('gradient');
 // }
