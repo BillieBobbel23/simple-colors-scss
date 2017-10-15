@@ -4,10 +4,10 @@ var gulp = require('gulp'),
     rename = require('gulp-rename');
 
 gulp.task('make-css', function() {
-  return gulp.src("./*.scss")
+  return gulp.src("./tests/*.scss")
           .pipe(sass())
-          .pipe(gulp.dest("./css/"))
+          .pipe(gulp.dest("./tests/css/"))
           .pipe(csso({sourceMap: true}))
           .pipe(rename({suffix: '.min'}))
-          .pipe(gulp.dest("./css/"))
+          .pipe(gulp.dest("./tests/css/"))
 });
