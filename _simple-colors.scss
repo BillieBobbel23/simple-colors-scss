@@ -54,9 +54,21 @@ $colors: merge-maps(
   $not-really-colors
 );
 
+// Examples of mixins to simplify even more
+@mixin color($key) {
+  color: color($key);
+}
+@mixin bg($key) {
+  background-color: color($key);
+}
+@mixin border-color($key) {
+  border-color: color($key);
+}
+
 // use it:
 // body {
-//   background-color: color('black');
-//   color: color('white');
-//   border-color: color('gradient');
+//  @include color('black');
+//  @include bg('white');
+//  @include border-color('gradient');
+//  border-right-color: color('test');
 // }
