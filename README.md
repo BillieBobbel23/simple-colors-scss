@@ -1,4 +1,4 @@
-# [simple-colors 0.1.0](https://github.com/BillieBobbel23/simple-colors)
+# [simple-colors 0.2.1](https://github.com/BillieBobbel23/simple-colors)
 Color management for atomic / modular design systems.
 
 ## Installation
