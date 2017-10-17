@@ -8,15 +8,37 @@ Color management for atomic / modular design systems.
 
 ## Usage
 
-#### Using SCSS
+### Using SCSS
 
-Import _simple-colors.scss, or directly copy the contents into your workflow.
-
+Import or copy the contents of _simple-colors.scss into your file before any other imports or styles.
 ```
 @import '/simple-colors/simple-colors';
+@import 'other-styles';
+body {margin:0;}
 ```
 
-There are helper mixins available to get started
+#### Customising color themes
+
+For each color add their unique name to $colors ([chir.ag website](http://chir.ag/projects/name-that-color/#6195ED) or [npm package](https://www.npmjs.com/package/namethatcolor))
+```
+$colors: (
+  'white': #fff,
+  'black': #000,
+  'hot-pink':  #ff69b4,
+  'pale-cornflower-blue': #abcdef
+);
+```
+Use either $custom-colors or create your own theme to add some labels
+```
+$custom-colors: (
+  'test': color('hot-pink'),
+  'theme-bg': color('pale-cornflower-blue')
+);
+```
+
+#### Setting colors
+
+There are helper mixins available to create some simple styles:
 ```
 .element{
   @include color('white');
@@ -24,16 +46,14 @@ There are helper mixins available to get started
   @include border-color('test');
 }
 ```
-Use the color() function to set values elsewhere
+or the color function that retrieves the value and can be passed around.
 ```
-@include svg-icon($icon: 'thumbsup', $color: color('white'));
-```
-Or integrate it inside mixins
-```
-@mixin svg-icon($icon: 'thumbsup', $color: 'white'){
-  fill: color($color);
+.icon {
+  path: color('test');
 };
+@include icon('thumbs-up', color('test'));
 ```
+
 ## Authors
 
 * [billiebobbel23](https://github.com/BillieBobbel23/)
