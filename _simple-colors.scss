@@ -24,6 +24,8 @@
   @return get-map($colors, $key);
 }
 
+// Absolute color map
+// ---
 // name colors in an absolute map based on their value:
 // http://chir.ag/projects/name-that-color/#6195ED or
 // https://www.npmjs.com/package/namethatcolor
@@ -34,7 +36,9 @@ $colors: (
   'pale-cornflower-blue': #abcdef
 );
 
-// create shorthands for things, using the names above
+// Shorthands and bindings
+// ---
+// create shorthands using the names above to create a pallete
 $test-colors: (
   'test':  color('hot-pink'),
   'test-blue': color('pale-cornflower-blue'),
