@@ -1,4 +1,4 @@
-# [simple-colors](https://github.com/BillieBobbel23/simple-colors)
+# [simple-colors](https://github.com/BillieBobbel23/simple-colors/)
 Color management for atomic / modular design systems.
 
 ## Installation
@@ -10,7 +10,7 @@ Color management for atomic / modular design systems.
 
 ### Using SCSS
 
-Import or copy the contents of _simple-colors.scss into your file before any other imports or styles.
+Import or copy the contents of ```dist/_simple-colors.scss``` into your file before any other imports or styles.
 ```
 @import '/simple-colors/simple-colors';
 @import 'other-styles';
