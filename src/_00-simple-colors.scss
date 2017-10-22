@@ -1,4 +1,4 @@
-// Simple colors, two maps and a function
+// simple-colors, two maps and a function
 // ---
 @function color($key) {
   @if( map-has-key($colors, $key)) {
@@ -12,7 +12,6 @@
 // name colors in an absolute map based on their value:
 // http://chir.ag/projects/name-that-color/#6195ED or
 // https://www.npmjs.com/package/namethatcolor
-// can be used for
 $colors: (
   'none': transparent,
   'white': #fff,
@@ -26,8 +25,3 @@ $bindings: (
 );
 
 $colors: map-merge($colors, $bindings);
-
-// Bind color() to things
-// @mixin color($key) {
-//   color: color($key);
-// }

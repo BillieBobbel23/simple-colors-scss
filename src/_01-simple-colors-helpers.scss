@@ -1,0 +1,21 @@
+// simple-colors helper mixins
+@mixin color($key) {
+  color: color($key);
+}
+@mixin bg($key) {
+  background-color: color($key);
+}
+@mixin border-color($key) {
+  border-color: color($key);
+}
+@mixin shadow($key, $x:0, $y:0, $blur:.25rem, $inset:0, $color: 'black') {
+  box-shadow:$x $y, $blur, $inset, $color: 'black';
+}
+
+// use it:
+// body {
+//  @include color('black');
+//  @include bg('white');
+//  @include border-color('gradient');
+//  border-right-color: color('test');
+// }
