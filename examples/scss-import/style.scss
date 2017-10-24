@@ -1,0 +1,8 @@
+@import 'simple-colors';
+
+body {
+ @include color('white');
+ @include bg('black');
+ @include border-color('gradient');
+ border-right-color: color('test');
+}
