@@ -1,5 +1,5 @@
 # [simple-colors](https://github.com/BillieBobbel23/simple-colors)
-Color management for atomic / modular design systems.
+Color management for atomic / modular design systems using SCSS
 
 ## Installation
 
@@ -8,18 +8,18 @@ Color management for atomic / modular design systems.
 
 ## Usage
 
-### Using SCSS
+#### Importing
 
-Import or copy the contents of _simple-colors.scss into your file before any other imports or styles.
+Import ```/dist/_simple-colors.scss``` into your file before any other imports or styles.
 ```
-@import '/simple-colors/simple-colors';
+@import 'simple-colors';
 @import 'other-styles';
 body {margin:0;}
 ```
 
-#### Customising color themes
+#### Customising
 
-For each color add their unique name to $colors ([chir.ag website](http://chir.ag/projects/name-that-color/#6195ED) or [npm package](https://www.npmjs.com/package/namethatcolor))
+For each base color add their unique name to ```$colors``` ([chir.ag website](http://chir.ag/projects/name-that-color/#6195ED) or [npm package](https://www.npmjs.com/package/namethatcolor))
 ```
 $colors: (
   'white': #fff,
@@ -28,17 +28,24 @@ $colors: (
   'pale-cornflower-blue': #abcdef
 );
 ```
-Use either $custom-colors or create your own theme to add some labels
+Use ```$bindings``` to create consistent naming
 ```
-$custom-colors: (
+$bindings: (
   'test': color('hot-pink'),
-  'theme-bg': color('pale-cornflower-blue')
+  'button': color('pale-cornflower-blue')
 );
 ```
+#### Using
+Use the ```color()``` function or some helper mixins in your scss files:
+```
+.button {
+  border-color: color("button");
+  @include color('button');
+};
+```
+## Helper mixins
 
-#### Setting colors
-
-There are helper mixins available to create some simple styles:
+Helper mixins are included for some simple tasks like setting backgrounds and text colors.
 ```
 .element{
   @include color('white');
@@ -46,13 +53,25 @@ There are helper mixins available to create some simple styles:
   @include border-color('test');
 }
 ```
-or the color function that retrieves the value and can be passed around.
+the ```color()``` function is more versatile and can be passed around or use with any regular CSS.
 ```
 .icon {
-  path: color('test');
+  fill: color('white');
+  background: darken(color('test'), 20%);
 };
-@include icon('thumbs-up', color('test'));
 ```
+## Extending
+
+Extending and modifying simple-colors is easy, write your own functions or mixins or simply convert some existing logic easily.
+
+## Development edition
+
+A bare bones version of simple-colors, focused on simplicity and implementation.
+It  contains only the two color maps and ```color()``` function to simplify as much as possible.
+
+#### Usage
+
+Clone and import ```./dist/_simple-colors-mini.scss```
 
 ## Authors
 

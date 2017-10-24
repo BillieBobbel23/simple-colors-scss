@@ -18,5 +18,10 @@ gulp.task('make-dist', function() {
           .pipe(gconcat('_simple-colors.scss'))
           .pipe(gulp.dest("./dist/"))
 });
+gulp.task('make-dist-mini', function() {
+  return gulp.src("./src/_00-simple-colors.scss")
+          .pipe(gconcat('_simple-colors-mini.scss'))
+          .pipe(gulp.dest("./dist/"))
+});
 
-gulp.task('build', ["make-dist"]);
+gulp.task('build', ["make-dist", "make-dist-mini"]);
