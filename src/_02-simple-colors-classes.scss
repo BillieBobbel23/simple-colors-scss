@@ -1,0 +1,10 @@
+// Output every color in $colors as a series of classes
+@mixin colors-as-classes($map: $colors) {
+  @each $key, $v in $map {
+    .color-#{$key} { color: color($key); }
+    .bg-#{$key} { background-color: color($key); }
+    .border-#{$key} { border: solid 1px color($key); }
+  }
+}
+
+@include colors-as-classes();

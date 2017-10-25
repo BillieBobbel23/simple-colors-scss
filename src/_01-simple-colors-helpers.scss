@@ -8,14 +8,14 @@
 @mixin border-color($key) {
   border-color: color($key);
 }
-@mixin shadow($key, $x:0, $y:0, $blur:.25rem, $inset:0, $color: 'black') {
-  box-shadow:$x $y, $blur, $inset, $color: 'black';
+@mixin shadow($x:0, $y:0, $blur:.25rem, $color: color('black')) {
+  box-shadow:$x $y $blur $color;
 }
 
 // use it:
-// body {
-//  @include color('black');
-//  @include bg('white');
-//  @include border-color('gradient');
-//  border-right-color: color('test');
-// }
+body {
+ @include color('black');
+ @include bg('white');
+ @include border-color('gradient');
+ border-right-color: color('test');
+}

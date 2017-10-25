@@ -36,14 +36,23 @@ $colors: map-merge($colors, $bindings);
 @mixin border-color($key) {
   border-color: color($key);
 }
-@mixin shadow($key, $x:0, $y:0, $blur:.25rem, $inset:0, $color: 'black') {
-  box-shadow:$x $y, $blur, $inset, $color: 'black';
-}
+
 
 // use it:
-// body {
-//  @include color('black');
-//  @include bg('white');
-//  @include border-color('gradient');
-//  border-right-color: color('test');
-// }
+body {
+ @include color('black');
+ @include bg('white');
+ @include border-color('gradient');
+ border-right-color: color('test');
+}
+
+// Output every color in $colors as a series of classes
+@mixin colors-as-classes($map: $colors) {
+  @each $key, $v in $map {
+    .color-#{$key} { color: color($key); }
+    .bg-#{$key} { background-color: color($key); }
+    .border-#{$key} { border: solid 1px color($key); }
+  }
+}
+
+@include colors-as-classes();
