@@ -13,9 +13,9 @@
 }
 
 // use it:
-body {
- @include color('black');
- @include bg('white');
- @include border-color('gradient');
- border-right-color: color('test');
-}
+// body {
+//  @include color('black');
+//  @include bg('white');
+//  @include border-color('gradient');
+//  border-right-color: color('test');
+// }
