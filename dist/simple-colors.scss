@@ -47,3 +47,15 @@ $colors: map-merge($colors, $bindings);
 //  @include border-color('gradient');
 //  border-right-color: color('test');
 // }
+
+// Output every color in $colors as a series of classes
+@mixin colors-as-classes($map: $colors) {
+  @each $key, $v in $map {
+    .color-#{$key} { color: color($key); }
+    .bg-#{$key} { background-color: color($key); }
+    .border-#{$key} { border: solid 1px color($key); }
+  }
+}
+
+// Use it:
+@include colors-as-classes();
