@@ -28,7 +28,7 @@ $colors: (
   'pale-cornflower-blue': #abcdef
 );
 ```
-Use ```$bindings``` to create consistent naming
+Use ```$bindings``` to create naming based on references
 ```
 $bindings: (
   'test': color('hot-pink'),
@@ -60,6 +60,16 @@ the ```color()``` function is more versatile and can be passed around or use wit
   background: darken(color('test'), 20%);
 };
 ```
+
+## Prototyping
+
+Optionally the ```simple-colors.scss``` file generates CSS (regular and minified) that adds classes for each color in ```$colors``` and outputs that as a CSS file.
+
+#### Usage
+
+Clone and generate ```./dist/simple-colors.scss```
+
+
 ## Extending
 
 Extending and modifying simple-colors is easy, write your own functions or mixins or simply convert some existing logic easily.

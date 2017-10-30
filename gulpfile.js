@@ -4,24 +4,36 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     gconcat = require('gulp-concat');
 
-gulp.task('make-css', function() {
-  return gulp.src("./tests/*.scss")
-          .pipe(sass())
-          .pipe(gulp.dest("./tests/css/"))
-          .pipe(csso({sourceMap: true}))
-          .pipe(rename({suffix: '.min'}))
-          .pipe(gulp.dest("./tests/css/"))
+// Make SCSS files for ./dist/
+gulp.task('scss', function() {
+  return gulp.src("./src/*.scss")
+          .pipe(gconcat('simple-colors.scss'))
+          .pipe(gulp.dest("./dist/"))
+          .pipe(rename({basename: 'simple-colors'}))
+          .pipe(gulp.dest("./dist/"))
 });
 
-gulp.task('make-dist', function() {
-  return gulp.src("./src/*.scss")
+
+gulp.task('scss-css', function() {
+  return gulp.src(["./src/_00-simple-colors.scss","./src/_01-simple-colors-helpers.scss"])
           .pipe(gconcat('_simple-colors.scss'))
           .pipe(gulp.dest("./dist/"))
 });
-gulp.task('make-dist-mini', function() {
+
+gulp.task('css', function() {
+  return gulp.src("./dist/*.scss")
+          .pipe(sass())
+          .pipe(gulp.dest("./dist/css/"))
+          .pipe(csso({sourceMap: true}))
+          .pipe(rename({suffix: '.min'}))
+          .pipe(gulp.dest("./dist/css/"))
+});
+
+gulp.task('simple', function() {
   return gulp.src("./src/_00-simple-colors.scss")
-          .pipe(gconcat('_simple-colors-mini.scss'))
+          .pipe(rename({basename: '_simple-colors-mini'}))
           .pipe(gulp.dest("./dist/"))
 });
 
-gulp.task('build', ["make-dist", "make-dist-mini"]);
+gulp.task('dist', ["scss", "scss-css", "simple"]);
+gulp.task('build', ["dist", "css"]);
