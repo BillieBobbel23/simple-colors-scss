@@ -53,11 +53,15 @@ Helper mixins are included for some simple tasks like setting backgrounds and te
   @include border-color('test');
 }
 ```
-the ```color()``` function is more versatile and can be passed around or use with any regular CSS.
+the ```color()``` function is more versatile and can be passed around or used with any regular SCSS.
 ```
 .icon {
   fill: color('white');
-  background: darken(color('test'), 20%);
+  color: darken(color('test'), 20%);
+  background: linear-gradient( to right,
+    darken(color('test'), 40%) 0,
+    color('test') 100%,
+  );
 };
 ```
 
@@ -72,7 +76,7 @@ Clone and generate ```./dist/simple-colors.scss```
 
 ## Extending
 
-Extending and modifying simple-colors is easy, write your own functions or mixins or simply convert some existing logic easily.
+Extending and modifying simple-colors is easy, write your own functions or mixins or pipe it into your setup directly.
 
 ## Development edition
 
